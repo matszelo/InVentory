@@ -13,7 +13,7 @@ class Equipmentform(ModelForm):
             'numer_seryjny': 'Numer seryjny',
             'numer_inwentarzowy': 'Numer inwentarzowy',
             'lokalizacja': 'Lokalizacja',
-            'data_utworzenia': 'Format daty: DD-MM-YYYY HH:MM:SS',
+            'data_utworzenia': 'Format daty (RRRR.MM.DD)',
         }
         widgets = {
             'kategoria': forms.Select(attrs={'class':'form-select', 'placeholder':'Kategoria'}),

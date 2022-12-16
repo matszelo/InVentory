@@ -1,5 +1,6 @@
 from django.db import models
-from django.utils import timezone
+from django.utils.datetime_safe import date
+
 
 class Kategoria(models.Model):
     nazwa = models.CharField(max_length=50)
@@ -39,7 +40,7 @@ class Sprzet(models.Model):
     numer_seryjny = models.CharField(max_length=50, null=True, blank=False)
     numer_inwentarzowy = models.CharField(max_length=6, null=True, blank=False)
     lokalizacja = models.ForeignKey(Lokalizacja, on_delete=models.CASCADE, null=True, blank=False)
-    data_utworzenia = models.DateTimeField(null=True, blank=False)
+    data_utworzenia = models.DateTimeField(default=date.today)
 
     def __str__(self):
         return self.nazwa

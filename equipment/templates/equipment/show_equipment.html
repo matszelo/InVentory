@@ -1,0 +1,20 @@
+{% extends 'equipment/base.html' %}
+
+{% block content %}
+    <div class="card">
+       <div class="card-header ">
+          <h1>{{ equipment.nazwa }}</h1>
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p class="fs-7">ID Sprzętu: {{ equipment.id }}<p/>
+              <p class="fs-7">Kategoria: {{ equipment.kategoria }}<p/>
+              <p class="fs-7">Producent: {{ equipment.producent }}<p/>
+              <p class="fs-7">Numer seryjny: {{ equipment.numer_seryjny }}<p/>
+              <p class="fs-7">Numer inwentarzowy: {{ equipment.numer_inwentarzowy }}<p/>
+              <p class="fs-7">Lokalizacja: {{ equipment.lokalizacja }}<p/>
+              <p class="fs-7">Data utworzenia: {{ equipment.data_utworzenia }}<p/>
+            </blockquote>
+       </div>
+    </div>
+{% endblock %}

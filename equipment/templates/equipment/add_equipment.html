@@ -1,7 +1,6 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
-<center>
   <h1>Dodawanie nowego sprzętu</h1>
   <br/><br/>
     {% if submitted %}
@@ -11,11 +10,9 @@
 
   <form action="" method=POST>
       {% csrf_token %}
-
       {{ form.as_p }}
 
       <input type="submit" value="Dodaj" class="btn btn-secondary">
   </form>
   {%endif %}
-</center>
 {% endblock %}
