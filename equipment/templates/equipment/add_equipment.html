@@ -2,19 +2,20 @@
 
 {% block content %}
 <center>
-  <h1>Dodawanie nowego sprzętu</h1>
+    <h1>Dodawanie nowego sprzętu</h1>
 </center>
-  <br/>
+
     {% if submitted %}
+
         Poprawnie dodano nowy sprzęt!!!
 
     {% else %}
 
-  <form action="" method=POST>
+<form action="" method=POST>
       {% csrf_token %}
       {{ form.as_p }}
-
       <input type="submit" value="Dodaj" class="btn btn-secondary">
-  </form>
-  {%endif %}
+</form>
+
+{%endif %}
 {% endblock %}
