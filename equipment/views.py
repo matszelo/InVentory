@@ -33,8 +33,9 @@ def add_equipment(request):
 
 def all_equipment(request):
     equipment_list = Sprzet.objects.all()
-    p = Paginator(Sprzet.objects.all(), 1)
+    p = Paginator(Sprzet.objects.all(), 10)
     page = request.GET.get('page')
     equipments = p.get_page(page)
-    return render(request, 'equipment/equipment_list.html', {'equipment_list': equipment_list, 'equipments': equipments})
+    nums = "a" * equipments.paginator.num_pages
+    return render(request, 'equipment/equipment_list.html', {'equipment_list': equipment_list, 'equipments': equipments, 'nums': nums})
 
