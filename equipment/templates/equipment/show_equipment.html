@@ -20,6 +20,7 @@
         <div class="container-fluid d-grid gap-2 d-md-block">
             <a class="btn btn-secondary" href="{% url 'equipment_list' %}" role="button">Powrót</a>
             <a class="btn btn-warning" href="{% url 'update_equipment' equipment.id %}" role="button">Edytuj</a>
+            <a class="btn btn-danger" href="{% url 'delete_equipment' equipment.id %}" role="button">Usuń</a>
         </div>
     </nav>
 </div>

@@ -3,6 +3,10 @@ from .models import Sprzet
 from django.http import HttpResponseRedirect
 from .forms import Equipmentform
 
+def delete_equipment(request, equipment_id):
+    equipment = Sprzet.objects.get(pk=equipment_id)
+    equipment.delete()
+    return redirect('equipment_list')
 def update_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
     form = Equipmentform(request.POST or None, instance=equipment)
