@@ -1,7 +1,7 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
-    <div class="card">
+<div class="card">
        <div class="card-header ">
           <h1>{{ equipment.nazwa }}</h1>
           </div>
@@ -16,5 +16,11 @@
               <p class="fs-7">Data utworzenia: {{ equipment.data_utworzenia }}<p/>
             </blockquote>
        </div>
-    </div>
+    <nav class="navbar bg-dark">
+        <div class="container-fluid d-grid gap-2 d-md-block">
+            <a class="btn btn-secondary" href="{% url 'equipment_list' %}" role="button">Powrót</a>
+            <a class="btn btn-warning" href="{% url 'update_equipment' equipment.id %}" role="button">Edytuj</a>
+        </div>
+    </nav>
+</div>
 {% endblock %}

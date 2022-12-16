@@ -2,6 +2,14 @@ from django.shortcuts import render, redirect
 from .models import Sprzet
 from django.http import HttpResponseRedirect
 from .forms import Equipmentform
+
+def update_equipment(request, equipment_id):
+    equipment = Sprzet.objects.get(pk=equipment_id)
+    form = Equipmentform(request.POST or None, instance=equipment)
+    if form.is_valid():
+        form.save()
+        return redirect('equipment_list')
+    return render(request, 'equipment/update_equipment.html', {'equipment': equipment, 'form': form})
 def show_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
     return render(request, 'equipment/show_equipment.html', {'equipment': equipment})
