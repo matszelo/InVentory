@@ -5,16 +5,16 @@
 <form action="" method="POST">
   {% csrf_token %}
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Nazwa użytkownika</label>
+    <label class="form-label">Nazwa użytkownika</label>
     <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Hasło</label>
+    <label class="form-label">Hasło</label>
     <input type="password" class="form-control" name="password">
   </div>
   <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Zapamiętaj mnie</label>
+    <input type="checkbox" class="form-check-input" name="checkbox">
+    <label class="form-check-label">Zapamiętaj mnie</label>
   </div>
   <input type="submit" value="Zaloguj" class="btn btn-secondary">
 </form>
