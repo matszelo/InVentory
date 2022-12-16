@@ -22,7 +22,7 @@
   </thead>
   <tbody>
   <tr>
-{% for equipment in equipment_list %}
+{% for equipment in equipments %}
     <th scope="row">{{ equipment.id }}</th>
     <td>
         <a href="{% url 'show_equipment' equipment.id %}">{{ equipment.nazwa }}</a>
@@ -35,6 +35,19 @@
 {% endfor %}
   </tbody>
 </table>
+<br/>
+{% if equipments.has_previous %}
+    <a href="?page=1">&laquo Pierwsza</a>
+    <a href="?page={{equipments.previous_page_number}}">Poprzednia</a>
 
+{% endif %}
+
+Page {{ equipments.number }} of {{ equipments.paginator.num_pages }}
+
+{% if equipments.has_next %}
+    <a href="?page={{equipments.next_page_number}}">Następna</a>
+    <a href="?page={{equipments.paginator.num_pages}}">Ostatnia &raquo</a>
+
+{% endif %}
 
 {% endblock %}

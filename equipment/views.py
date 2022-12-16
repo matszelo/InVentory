@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Sprzet
 from django.http import HttpResponseRedirect
 from .forms import Equipmentform
+from django.core.paginator import Paginator
 
 def delete_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
@@ -32,5 +33,8 @@ def add_equipment(request):
 
 def all_equipment(request):
     equipment_list = Sprzet.objects.all()
-    return render(request, 'equipment/equipment_list.html', {'equipment_list': equipment_list})
+    p = Paginator(Sprzet.objects.all(), 1)
+    page = request.GET.get('page')
+    equipments = p.get_page(page)
+    return render(request, 'equipment/equipment_list.html', {'equipment_list': equipment_list, 'equipments': equipments})
 
