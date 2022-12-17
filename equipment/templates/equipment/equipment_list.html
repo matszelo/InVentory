@@ -1,7 +1,7 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
-
+{% if user.is_authenticated%}
 <h1>Lista Sprzętów:</h1>
 <br/>
 <nav class="navbar bg-light">
@@ -22,7 +22,7 @@
   </thead>
   <tbody>
   <tr>
-{% for equipment in equipments %}
+    {% for equipment in equipments %}
     <th scope="row">{{ equipment.id }}</th>
     <td>
         <a href="{% url 'show_equipment' equipment.id %}">{{ equipment.nazwa }}</a>
@@ -32,33 +32,37 @@
     <td>{{ equipment.numer_inwentarzowy }}</td>
     <td>{{ equipment.lokalizacja }}</td>
   </tr>
-{% endfor %}
+    {% endfor %}
   </tbody>
 </table>
 <br/>
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-{% if equipments.has_previous %}
+    {% if equipments.has_previous %}
     <li class="page-item">
         <a class="page-link" href="?page=1">&laquo Pierwsza</a>
     </li>
     <li class="page-item">
         <a class="page-link" href="?page={{equipments.previous_page_number}}">Poprzednia</a>
     </li>
-{% endif %}
-{% for i in nums %}
+    {% endif %}
+    {% for i in nums %}
         <li class="page-item">
             <a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
         </li>
-{% endfor %}
-{% if equipments.has_next %}
+    {% endfor %}
+    {% if equipments.has_next %}
     <li class="page-item">
         <a class="page-link" href="?page={{equipments.next_page_number}}">Następna</a>
     </li>
     <li class="page-item">
         <a class="page-link" href="?page={{equipments.paginator.num_pages}}">Ostatnia &raquo</a>
     </li>
-{% endif %}
+    {% endif %}
     </ul>
 </nav>
+{% else %}
+<h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>
+<a href="{% url 'login_user' %}">Zaloguj się</a>
+{% endif %}
 {% endblock %}

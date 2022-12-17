@@ -1,6 +1,7 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated%}
 <center>
     <h1>Dodawanie nowego sprzętu</h1>
 </center>
@@ -8,7 +9,7 @@
     {% if submitted %}
 <center>
         Poprawnie dodano nowy sprzęt!!!
-        </br>
+</br>
         <a class="btn btn-secondary" href="{% url 'equipment_list' %}" role="button">Powrót</a>
 </center>
     {% else %}
@@ -19,5 +20,10 @@
       <input type="submit" value="Dodaj" class="btn btn-secondary">
 </form>
 
-{%endif %}
+    {%endif %}
+
+{% else %}
+<h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>
+<a href="{% url 'login_user' %}">Zaloguj się</a>
+{% endif %}
 {% endblock %}

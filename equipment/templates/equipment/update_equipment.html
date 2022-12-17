@@ -1,6 +1,7 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated%}
 <center>
   <h1>Edycja sprzętu {{ equipment.nazwa }}</h1>
 </center>
@@ -10,4 +11,8 @@
   {{ form.as_p }}
   <input type="submit" value="Zaakceptuj zmiany" class="btn btn-secondary">
 </form>
+{% else %}
+<h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>
+<a href="{% url 'login_user' %}">Zaloguj się</a>
+{% endif %}
 {% endblock %}

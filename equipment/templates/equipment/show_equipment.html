@@ -1,6 +1,7 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated%}
 <div class="card">
        <div class="card-header ">
           <h1>{{ equipment.nazwa }}</h1>
@@ -24,4 +25,8 @@
         </div>
     </nav>
 </div>
+{% else %}
+<h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>
+<a href="{% url 'login_user' %}">Zaloguj się</a>
+{% endif %}
 {% endblock %}
