@@ -4,6 +4,14 @@ from django.http import HttpResponseRedirect
 from .forms import Equipmentform
 from django.core.paginator import Paginator
 
+def search_equipment(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        equipments = Sprzet.objects.filter(nazwa__contains=searched)
+        return render(request, 'equipment/search_equipment.html', {'searched':searched, 'equipments':equipments})
+    else:
+        return render(request, 'equipment/search_equipment.html', {})
+
 def delete_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
     equipment.delete()
