@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.datetime_safe import date
 
-
 class Kategoria(models.Model):
     nazwa = models.CharField(max_length=50)
 
