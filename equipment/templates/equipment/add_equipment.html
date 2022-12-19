@@ -1,7 +1,7 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated %}
+{% if user.is_authenticated and user.is_staff%}
 <center>
     <h1>Dodawanie nowego sprzętu</h1>
     {{ group }}
@@ -18,9 +18,9 @@
       {{ form.as_p }}
       <input type="submit" value="Dodaj" class="btn btn-secondary">
 </form>
-    {%endif %}
+    {% endif %}
 {% else %}
-<h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>
+<h1>Tylko Administratorzy oraz Edytorzy mogą dodawać sprzęt. Jeżeli jesteś Administratorem lub Edytorem zaloguj się klikając w link poniżej</h1>
 <a href="{% url 'login_user' %}">Zaloguj się</a>
 {% endif %}
 {% endblock %}

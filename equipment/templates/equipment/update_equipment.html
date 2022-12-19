@@ -1,7 +1,7 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated%}
+{% if user.is_authenticated and user.is_staff %}
 <center>
   <h1>Edycja sprzętu {{ equipment.nazwa }}</h1>
 </center>
@@ -12,7 +12,7 @@
   <input type="submit" value="Zaakceptuj zmiany" class="btn btn-secondary">
 </form>
 {% else %}
-<h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>
+<h1>Tylko Administratorzy oraz Edytorzy mogą edytować sprzęt. Jeżeli jesteś Administratorem lub Edytorem zaloguj się klikając w link poniżej</h1>
 <a href="{% url 'login_user' %}">Zaloguj się</a>
 {% endif %}
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated%}
+{% if user.is_authenticated %}
 <div class="card">
        <div class="card-header ">
           <h1>{{ equipment.nazwa }}</h1>
@@ -17,6 +17,7 @@
               <p class="fs-7">Data utworzenia: {{ equipment.data_utworzenia }}<p/>
             </blockquote>
        </div>
+    {% if user.is_authenticated and user.is_staff %}
     <nav class="navbar bg-dark">
         <div class="container-fluid d-grid gap-2 d-md-block">
             <a class="btn btn-secondary" href="{% url 'equipment_list' %}" role="button">Powrót</a>
@@ -24,6 +25,7 @@
             <a class="btn btn-danger" href="{% url 'delete_equipment' equipment.id %}" role="button">Usuń</a>
         </div>
     </nav>
+    {% endif %}
 </div>
 {% else %}
 <h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>

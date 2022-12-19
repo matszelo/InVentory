@@ -12,7 +12,7 @@ def login_user(request):
             login(request, user)
             return redirect('equipment_list')
         else:
-            messages.success(request, "Nieporawne dane logowania, spróbuj ponownie")
+            messages.success(request, "Niepoprawne dane logowania, spróbuj ponownie")
             return redirect('login_user')
     else:
         return render(request, 'members/login.html', {})
