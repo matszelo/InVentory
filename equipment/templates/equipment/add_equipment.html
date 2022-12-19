@@ -1,11 +1,11 @@
 {% extends 'equipment/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated%}
+{% if user.is_authenticated %}
 <center>
     <h1>Dodawanie nowego sprzętu</h1>
+    {{ group }}
 </center>
-
     {% if submitted %}
 <center>
         Poprawnie dodano nowy sprzęt!!!
@@ -13,15 +13,12 @@
         <a class="btn btn-secondary" href="{% url 'equipment_list' %}" role="button">Powrót</a>
 </center>
     {% else %}
-
 <form action="" method=POST>
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="Dodaj" class="btn btn-secondary">
 </form>
-
     {%endif %}
-
 {% else %}
 <h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>
 <a href="{% url 'login_user' %}">Zaloguj się</a>
