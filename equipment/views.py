@@ -3,6 +3,20 @@ from .models import Sprzet
 from .forms import Equipmentform
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+import csv
+
+def equipment_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=equipment.csv'
+    writer = csv.writer(response)
+    equipments = Sprzet.objects.all()
+    writer.writerow(['ID', 'Nazwa', 'Kategoria', 'Producent', 'Numer seryjny', 'Numer inwentarzowy', 'Lokalizacja', 'Data utworzenia'])
+
+    for equipment in equipments:
+        writer.writerow([equipment.id, equipment.nazwa, equipment.kategoria, equipment.producent, equipment.numer_seryjny, equipment.numer_inwentarzowy, equipment.lokalizacja, equipment.data_utworzenia])
+
+    return response
 
 def search_equipment(request):
     if request.method == "POST":

@@ -12,9 +12,7 @@
         {% if user.is_authenticated%}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'equipment_list' %}">Lista sprzętów</a>
-        {% endif %}
         </li>
-        {% if user.is_authenticated%}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'logout_user' %}">Wyloguj</a>
         {% endif %}
