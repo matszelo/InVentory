@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.datetime_safe import date
 
+
 class Kategoria(models.Model):
     nazwa = models.CharField(max_length=50)
 
@@ -40,7 +41,7 @@ class Sprzet(models.Model):
     numer_inwentarzowy = models.CharField(max_length=6, null=True, blank=False)
     lokalizacja = models.ForeignKey(Lokalizacja, on_delete=models.CASCADE, null=True, blank=False)
     data_utworzenia = models.DateTimeField(default=date.today)
-
+    zdjecie = models.ImageField(null=True, blank=True, upload_to="images/")
     def __str__(self):
         return self.nazwa
 

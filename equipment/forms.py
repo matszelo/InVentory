@@ -5,7 +5,7 @@ from .models import Sprzet
 class Equipmentform(ModelForm):
     class Meta:
         model = Sprzet
-        fields = ('kategoria', 'producent', 'nazwa', 'numer_seryjny', 'numer_inwentarzowy', 'lokalizacja', 'data_utworzenia')
+        fields = ('kategoria', 'producent', 'nazwa', 'numer_seryjny', 'numer_inwentarzowy', 'lokalizacja', 'data_utworzenia', 'zdjecie')
         labels = {
             'kategoria': 'Kategoria',
             'producent': 'Producent',
@@ -14,6 +14,7 @@ class Equipmentform(ModelForm):
             'numer_inwentarzowy': 'Numer inwentarzowy',
             'lokalizacja': 'Lokalizacja',
             'data_utworzenia': 'Format daty (RRRR.MM.DD)',
+            'zdjecie': '',
         }
         widgets = {
             'kategoria': forms.Select(attrs={'class':'form-select', 'placeholder':'Kategoria'}),

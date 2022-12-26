@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Sprzet
-from django.http import HttpResponseRedirect
 from .forms import Equipmentform
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
 
 def search_equipment(request):
     if request.method == "POST":
@@ -29,7 +29,7 @@ def show_equipment(request, equipment_id):
 def add_equipment(request):
     submitted = False
     if request.method == "POST":
-        form = Equipmentform(request.POST)
+        form = Equipmentform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('add_equipment?submitted=True')

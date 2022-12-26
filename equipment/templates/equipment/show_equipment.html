@@ -8,6 +8,9 @@
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
+              {% if equipment.zdjecie %}
+              <img src="{{ equipment.zdjecie.url }}" width="100">
+              {% endif %}
               <p class="fs-7">ID Sprzętu: {{ equipment.id }}<p/>
               <p class="fs-7">Kategoria: {{ equipment.kategoria }}<p/>
               <p class="fs-7">Producent: {{ equipment.producent }}<p/>
