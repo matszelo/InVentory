@@ -18,7 +18,7 @@ def delete_equipment(request, equipment_id):
     return redirect('equipment_list')
 def update_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
-    form = Equipmentform(request.POST or None, instance=equipment)
+    form = Equipmentform(request.POST or None, request.FILES or None, instance=equipment)
     if form.is_valid():
         form.save()
         return redirect('equipment_list')

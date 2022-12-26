@@ -6,7 +6,7 @@
   <h1>Edycja sprzętu {{ equipment.nazwa }}</h1>
 </center>
 <br/>
-<form action="" method=POST>
+<form action="" method=POST enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Zaakceptuj zmiany" class="btn btn-secondary">
