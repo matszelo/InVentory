@@ -16,7 +16,7 @@ class Equipmentform(ModelForm):
             'numer_seryjny': 'Numer seryjny',
             'numer_inwentarzowy': 'Numer inwentarzowy',
             'lokalizacja': 'Lokalizacja',
-            'data_utworzenia': 'Format daty (RRRR.MM.DD)',
+            'data_utworzenia': 'Format daty (Rok-Miesiąc-Dzień Godzina:Minuty)',
             'zdjecie': '',
         }
         widgets = {
