@@ -4,6 +4,7 @@ from .forms import Equipmentform
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from django.contrib import messages
 import csv
 
 
@@ -35,6 +36,7 @@ def search_equipment(request):
 def delete_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
     equipment.delete()
+    messages.success(request, "Usunięto sprzęt")
     return redirect('equipment_list')
 
 
@@ -43,9 +45,9 @@ def update_equipment(request, equipment_id):
     form = Equipmentform(request.POST or None, request.FILES or None, instance=equipment)
     if form.is_valid():
         form.save()
+        messages.success(request, "Zaktualizowano dane sprzętu")
         return redirect('equipment_list')
     return render(request, 'equipment/update_equipment.html', {'equipment': equipment, 'form': form})
-
 
 def show_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
