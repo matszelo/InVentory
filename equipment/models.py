@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Kategoria(models.Model):
@@ -41,7 +42,7 @@ class Sprzet(models.Model):
     numer_seryjny = models.CharField(max_length=50, null=True, blank=False)
     numer_inwentarzowy = models.CharField(max_length=6, null=True, blank=False)
     lokalizacja = models.ForeignKey(Lokalizacja, on_delete=models.CASCADE, null=True, blank=False)
-    data_utworzenia = models.DateTimeField()
+    data_utworzenia = models.DateTimeField(default=timezone.now)
     zdjecie = models.ImageField(null=True, blank=True, upload_to="images/")
 
     def __str__(self):
