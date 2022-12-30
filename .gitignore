@@ -2,5 +2,6 @@
 *~
 __pycache__
 WM
+/static
 db.sqlite3
 .DS_Store
