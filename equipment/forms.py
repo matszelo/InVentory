@@ -8,7 +8,7 @@ class Equipmentform(ModelForm):
         model = Sprzet
         fields = (
             'kategoria', 'producent', 'nazwa', 'numer_seryjny', 'numer_inwentarzowy', 'lokalizacja', 'data_utworzenia',
-            'zdjecie', 'QR_code')
+            'zdjecie')
         labels = {
             'kategoria': 'Kategoria',
             'producent': 'Producent',
@@ -18,7 +18,6 @@ class Equipmentform(ModelForm):
             'lokalizacja': 'Lokalizacja',
             'data_utworzenia': 'Format daty (Rok-Miesiąc-Dzień Godzina:Minuty)',
             'zdjecie': '',
-            'QR_code': '',
         }
         widgets = {
             'kategoria': forms.Select(attrs={'class': 'form-select', 'placeholder': 'Kategoria'}),
