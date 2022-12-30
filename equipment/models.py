@@ -57,7 +57,7 @@ class Sprzet(models.Model):
         qr_image = qrcode.make(self.nazwa)
         qr_offset = Image.new('RGB', (310, 310), 'white')
         qr_offset.paste(qr_image)
-        files_name = f'QR_code-{self.numer_inwentarzowy}.png'
+        files_name = f'QR_code-{self.nazwa}.png'
         stream = BytesIO()
         qr_offset.save(stream, 'PNG')
         self.QR_code.save(files_name, File(stream), save=False)
