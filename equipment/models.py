@@ -48,7 +48,7 @@ class Sprzet(models.Model):
     lokalizacja = models.ForeignKey(Lokalizacja, on_delete=models.CASCADE, null=True, blank=False)
     data_utworzenia = models.DateTimeField(default=timezone.now)
     zdjecie = models.ImageField(null=True, blank=True, upload_to="images/")
-    QR_code = models.ImageField(blank=True, upload_to='QR_code')
+    QR_code = models.ImageField(blank=True, upload_to='QR_code/')
 
     def __str__(self):
         return self.nazwa
