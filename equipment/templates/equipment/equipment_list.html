@@ -2,24 +2,20 @@
 
 {% block content %}
 {% if user.is_authenticated%}
-<h1>Lista Sprzętów:</h1>
-<br/>
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
+<nav class="navbar">
       {% if user.is_authenticated and user.is_staff %}
     <a class="btn btn-success" href="{% url 'add_equipment' %}" role="button">Dodaj nowy sprzęt</a>
       {% endif %}
-  </div>
-  <div class="nav-item">
-    <a class="nav-link" href="{% url 'equipment_csv' %}">Eksport do CSV</a>
-  </div>
-  <div>
-      <form class="d-flex" method=POST action="{% url 'search_equipment' %}">
-          {% csrf_token %}
-        <input class="form-control me-2" type="search" placeholder="Szukaj sprzętu" aria-label="Search" name="searched">
-        <button class="btn btn-outline-success" type="submit">Szukaj</button>
-      </form>
-  </div>
+    <div class="nav-item">
+        <a class="nav-link" href="{% url 'equipment_csv' %}">Eksport do CSV</a>
+    </div>
+    <div>
+          <form class="d-flex" method=POST action="{% url 'search_equipment' %}">
+              {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Szukaj sprzętu" aria-label="Search" name="searched">
+            <button class="btn btn-outline-success" type="submit">Szukaj</button>
+          </form>
+    </div>
 </nav>
 <table class="table table-striped table-hover">
   <thead class="table-dark">
