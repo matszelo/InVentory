@@ -27,7 +27,7 @@ def equipment_csv(request):
 def search_equipment(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        equipments = Sprzet.objects.filter(nazwa__contains=searched)
+        equipments = Sprzet.objects.filter(numer_inwentarzowy__contains=searched)
         return render(request, 'equipment/search_equipment.html', {'searched': searched, 'equipments': equipments})
     else:
         return render(request, 'equipment/search_equipment.html', {})

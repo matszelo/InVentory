@@ -2,7 +2,14 @@
 
 {% block content %}
 {% if user.is_authenticated%}
-<nav class="navbar" style="display: flex; justify-content: center;">
+<nav class="navbar bg-body-tertiary" style="display: flex; justify-content: right;">
+  <div class="container-fluid">
+    <form class="d-flex" method="POST" action="{% url 'search_equipment' %}">
+        {% csrf_token %}
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+      <button class="btn btn-success" type="submit">Search</button>
+    </form>
+  </div>
 </nav>
 <table class="table table-striped table-hover">
   <thead class="table-dark">
