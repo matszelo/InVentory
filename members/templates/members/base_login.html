@@ -8,17 +8,19 @@
   </head>
   <body class="bg-secondary">
     {% include 'members/navbar_login.html' %}
-    <br/>
+    <br>
     <div class="container">
-      {% if messages %}
+    {% if messages %}
         {% for message in messages %}
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" >
            {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         {% endfor %}
-      {% endif %}
-
+    {% endif %}
+    </div>
+    <br><br><br><br>
+    <div class="container" style="display: flex; justify-content: center;">
       {% block content %}
       {% endblock %}
     </div>
