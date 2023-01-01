@@ -74,5 +74,4 @@ def all_equipment(request):
     page = request.GET.get('page')
     equipments = p.get_page(page)
     nums = "a" * equipments.paginator.num_pages
-    return render(request, 'equipment/equipment_list.html',
-                  {'equipment_list': equipment_list, 'equipments': equipments, 'nums': nums})
+    return render(request, 'equipment/equipment_list.html', {'equipment_list': equipment_list, 'equipments': equipments, 'nums': nums})
