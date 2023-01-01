@@ -23,3 +23,43 @@
     </div>
   </div>
 </nav>
+
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'welcome' %}">
+      <img src="/media/images/Logov3.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+      InVentory
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">MENU</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <center>
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        {% if user.is_authenticated%}
+          {% if user.is_authenticated and user.is_staff %}
+            <li>
+              <a class="btn btn-success" href="{% url 'add_equipment' %}" role="button">Dodaj nowy sprzęt</a>
+            </li>
+          {% endif %}
+
+            <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="{% url 'equipment_list' %}">Lista sprzętów</a>
+            <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="{% url 'logout_user' %}">Wyloguj</a>
+          {% else %}
+            <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="{% url 'login_user' %}">Logowanie</a>
+            </li>
+        {% endif %}
+        </ul>
+        </center>
+      </div>
+    </div>
+  </div>
+</nav>

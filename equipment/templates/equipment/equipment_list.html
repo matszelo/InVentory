@@ -3,9 +3,6 @@
 {% block content %}
 {% if user.is_authenticated%}
 <nav class="navbar">
-      {% if user.is_authenticated and user.is_staff %}
-    <a class="btn btn-success" href="{% url 'add_equipment' %}" role="button">Dodaj nowy sprzęt</a>
-      {% endif %}
     <div class="nav-item">
         <a class="nav-link" href="{% url 'equipment_csv' %}">Eksport do CSV</a>
     </div>
