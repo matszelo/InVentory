@@ -7,7 +7,7 @@ class Equipmentform(ModelForm):
     class Meta:
         model = Sprzet
         fields = (
-            'kategoria', 'producent', 'nazwa', 'numer_seryjny', 'numer_inwentarzowy', 'lokalizacja', 'data_utworzenia',
+            'kategoria', 'producent', 'nazwa', 'numer_seryjny', 'numer_inwentarzowy', 'lokalizacja',
             'zdjecie')
         labels = {
             'kategoria': 'Kategoria',
@@ -16,7 +16,6 @@ class Equipmentform(ModelForm):
             'numer_seryjny': 'Numer seryjny',
             'numer_inwentarzowy': 'Numer inwentarzowy',
             'lokalizacja': 'Lokalizacja',
-            'data_utworzenia': 'Format daty (Rok-Miesiąc-Dzień Godzina:Minuty)',
             'zdjecie': '',
         }
         widgets = {
@@ -26,5 +25,4 @@ class Equipmentform(ModelForm):
             'numer_seryjny': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Numer seryjny'}),
             'numer_inwentarzowy': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Numer inwentarzowy'}),
             'lokalizacja': forms.Select(attrs={'class': 'form-select', 'placeholder': 'Lokalizacja'}),
-            'data_utworzenia': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Data utworzenia'}),
         }

@@ -2,33 +2,37 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="card">
+<div class="card border-dark mb-8">
        <div class="card-header ">
           <h1>{{ equipment.nazwa }}</h1>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
               {% if equipment.zdjecie %}
-              <img src="{{ equipment.zdjecie.url }}" width="100">
+              <div class="position-absolute top-50 start-50 translate-middle">
+                <img src="{{ equipment.zdjecie.url }}" class="img-fluid" width="250">
+              </div>
               {% endif %}
-                  <p class="fs-7">ID Sprzętu: {{ equipment.id }}</p>
-                  <p class="fs-7">Kategoria: {{ equipment.kategoria }}</p>
+                <p class="fs-7">ID Sprzętu: {{ equipment.id }}</p>
+                <p class="fs-7">Kategoria: {{ equipment.kategoria }}</p>
                 <p class="fs-7">Producent: {{ equipment.producent }}</p>
                 <p class="fs-7">Numer seryjny: {{ equipment.numer_seryjny }}</p>
                 <p class="fs-7">Numer inwentarzowy: {{ equipment.numer_inwentarzowy }}</p>
                 <p class="fs-7">Lokalizacja: {{ equipment.lokalizacja }}</p>
                 <p class="fs-7">Data utworzenia: {{ equipment.data_utworzenia }}</p>
               {% if equipment.QR_code %}
-              <img src="{{ equipment.QR_code.url }}" width="100">
+              <div class="position-absolute top-50 end-0 translate-middle-y">
+              <img src="{{ equipment.QR_code.url }}" width="300">
+              </div>
               {% endif %}
             </blockquote>
        </div>
     {% if user.is_authenticated and user.is_staff %}
     <nav class="navbar bg-dark">
-        <div class="container-fluid d-grid gap-2 d-md-block">
-            <a class="btn btn-secondary" href="{% url 'equipment_list' %}" role="button">Powrót</a>
-            <a class="btn btn-warning" href="{% url 'update_equipment' equipment.id %}" role="button">Edytuj</a>
-            <a class="btn btn-danger" href="{% url 'delete_equipment' equipment.id %}" role="button">Usuń</a>
+        <div class="container-fluid d-grid gap-2 d-md-flex justify-content-center" >
+            <a class="btn btn-secondary col-3" href="{% url 'equipment_list' %}" role="button">Powrót</a>
+            <a class="btn btn-warning col-3" href="{% url 'update_equipment' equipment.id %}" role="button">Edytuj</a>
+            <a class="btn btn-danger col-3" href="{% url 'delete_equipment' equipment.id %}" role="button">Usuń</a>
         </div>
     </nav>
     {% endif %}
