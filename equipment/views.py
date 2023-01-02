@@ -45,7 +45,7 @@ def update_equipment(request, equipment_id):
     form = Equipmentform(request.POST or None, request.FILES or None, instance=equipment)
     if form.is_valid():
         form.save()
-        messages.success(request, "Zaktualizowano dane sprzętu")
+        messages.success(request, "Poprawnie zapisano dane sprzętu")
         return redirect('equipment_list')
     return render(request, 'equipment/update_equipment.html', {'equipment': equipment, 'form': form})
 
