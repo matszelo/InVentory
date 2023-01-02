@@ -36,9 +36,8 @@ def search_equipment(request):
 def delete_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
     equipment.delete()
-    messages.success(request, "Usunięto sprzęt")
+    messages.success(request, "Poprawnie usunięto sprzęt")
     return redirect('equipment_list')
-    # return HttpResponseRedirect('add_equipment?submitted=True')
 
 
 def update_equipment(request, equipment_id):
