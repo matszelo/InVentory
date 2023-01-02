@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import Sprzet
 from .forms import Equipmentform
 from django.core.paginator import Paginator
-# from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib import messages
 import csv
@@ -27,7 +26,7 @@ def equipment_csv(request):
 def search_equipment(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        equipments = Sprzet.objects.filter(numer_inwentarzowy__contains=searched)
+        equipments = Sprzet.objects.filter(nazwa__contains=searched)
         return render(request, 'equipment/search_equipment.html', {'searched': searched, 'equipments': equipments})
     else:
         return render(request, 'equipment/search_equipment.html', {})
@@ -48,6 +47,7 @@ def update_equipment(request, equipment_id):
         messages.success(request, "Poprawnie zapisano dane sprzętu")
         return redirect('equipment_list')
     return render(request, 'equipment/update_equipment.html', {'equipment': equipment, 'form': form})
+
 
 def show_equipment(request, equipment_id):
     equipment = Sprzet.objects.get(pk=equipment_id)
@@ -76,4 +76,6 @@ def all_equipment(request):
     page = request.GET.get('page')
     equipments = p.get_page(page)
     nums = "a" * equipments.paginator.num_pages
-    return render(request, 'equipment/equipment_list.html', {'equipment_list': equipment_list, 'equipments': equipments, 'nums': nums, 'equipment_count': equipment_count})
+    return render(request, 'equipment/equipment_list.html',
+                  {'equipment_list': equipment_list, 'equipments': equipments, 'nums': nums,
+                   'equipment_count': equipment_count})
