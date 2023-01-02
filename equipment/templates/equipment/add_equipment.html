@@ -7,11 +7,6 @@
     {{ group }}
 </center>
     {% if submitted %}
-<center>
-        Poprawnie dodano nowy sprzęt!!!
-</br>
-        <a class="btn btn-secondary" href="{% url 'equipment_list' %}" role="button">Powrót</a>
-</center>
     {% else %}
 <form action="" method=POST enctype="multipart/form-data">
       {% csrf_token %}

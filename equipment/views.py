@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Sprzet
 from .forms import Equipmentform
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
+# from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib import messages
 import csv
@@ -60,7 +60,8 @@ def add_equipment(request):
         form = Equipmentform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('add_equipment?submitted=True')
+            messages.success(request, "Poprawnie dodano nowy sprzęt")
+            return redirect('equipment_list')
     else:
         form = Equipmentform
         if 'submitted' in request.GET:
@@ -75,3 +76,5 @@ def all_equipment(request):
     equipments = p.get_page(page)
     nums = "a" * equipments.paginator.num_pages
     return render(request, 'equipment/equipment_list.html', {'equipment_list': equipment_list, 'equipments': equipments, 'nums': nums})
+
+# return HttpResponseRedirect('add_equipment?submitted=True')
