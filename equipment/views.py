@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Sprzet
 from .forms import Equipmentform
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
+# from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib import messages
 import csv
@@ -34,12 +34,11 @@ def search_equipment(request):
 
 
 def delete_equipment(request, equipment_id):
-    return HttpResponseRedirect('add_equipment?submitted=True')
-    if form.is_valid():
-        form.save()
-        messages.success(request, "Poprawnie zapisano dane sprzętu")
-        return redirect('equipment_list')
-
+    equipment = Sprzet.objects.get(pk=equipment_id)
+    equipment.delete()
+    messages.success(request, "Usunięto sprzęt")
+    return redirect('equipment_list')
+    # return HttpResponseRedirect('add_equipment?submitted=True')
 
 
 def update_equipment(request, equipment_id):
