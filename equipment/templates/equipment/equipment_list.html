@@ -2,9 +2,9 @@
 
 {% block content %}
 {% if user.is_authenticated%}
-<nav class="navbar bg-body-tertiary" style="display: flex; justify-content: center;">
+<nav class="navbar bg-body-tertiary" style="display: flex; justify-content: center; background-color: #f0f0f5;">
   <div class="container-fluid">
-      <a></a>
+      Liczba sprzętów: {{equipment_count}}
     <form class="d-flex" method="POST" action="{% url 'search_equipment' %}">
         {% csrf_token %}
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
