@@ -27,7 +27,7 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'welcome' %}">
-      <img src="/media/images/Logov3.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+      <img src="/media/images/Logov3.png" alt="" width="37" height="37" class="d-inline-block align-text-center">
       InVentory
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -40,6 +40,10 @@
       </div>
       <div class="offcanvas-body">
         <center>
+          <a class="navbar-brand">
+            <img src="/media/images/Logov3.png" alt="" width="180" height="180">
+          </a>
+          <br><br>
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         {% if user.is_authenticated%}
           {% if user.is_authenticated and user.is_staff %}

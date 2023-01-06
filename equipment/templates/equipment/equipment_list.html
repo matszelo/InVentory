@@ -2,13 +2,14 @@
 
 {% block content %}
 {% if user.is_authenticated%}
-<nav class="navbar bg-body-tertiary" style="display: flex; justify-content: center; background-color: #f0f0f5;">
+<br>
+<nav class="navbar bg-body-tertiary" style="display: flex; justify-content: center;">
   <div class="container-fluid">
       <h5>Liczba sprzętów: {{equipment_count}}</h5>
     <form class="d-flex" method="POST" action="{% url 'search_equipment' %}">
         {% csrf_token %}
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-      <button class="btn btn-success" type="submit">Search</button>
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched" style="background: rgba(255, 255, 255, 0.733);">
+      <button class="btn btn-success" type="submit" >Search</button>
     </form>
   </div>
 </nav>
@@ -43,27 +44,27 @@
     <a class="btn btn-danger d-grid gap-1 col-5 mx-auto" href="{% url 'equipment_pdf' %}" role="button">Eksport do PDF</a>
 </nav>
 <br>
-<nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
+<nav aria-label="Page navigation example" style="display: flex; justify-content: center; ">
     <ul class="pagination justify-content-center">
     {% if equipments.has_previous %}
     <li class="page-item">
-        <a class="page-link" href="?page=1">&laquo Pierwsza</a>
+        <a class="page-link" href="?page=1" style="background: rgba(255, 255, 255, 0.733);">&laquo Pierwsza</a>
     </li>
     <li class="page-item">
-        <a class="page-link" href="?page={{equipments.previous_page_number}}">Poprzednia</a>
+        <a class="page-link" href="?page={{equipments.previous_page_number}} " style="background: rgba(255, 255, 255, 0.733);">Poprzednia</a>
     </li>
     {% endif %}
     {% for i in nums %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+            <a class="page-link" href="?page={{ forloop.counter }}" style="background: rgba(255, 255, 255, 0.733);">{{ forloop.counter }}</a>
         </li>
     {% endfor %}
     {% if equipments.has_next %}
     <li class="page-item">
-        <a class="page-link" href="?page={{equipments.next_page_number}}">Następna</a>
+        <a class="page-link" href="?page={{equipments.next_page_number}}" style="background: rgba(255, 255, 255, 0.733);">Następna</a>
     </li>
     <li class="page-item">
-        <a class="page-link" href="?page={{equipments.paginator.num_pages}}">Ostatnia &raquo</a>
+        <a class="page-link" href="?page={{equipments.paginator.num_pages}}" style="background: rgba(255, 255, 255, 0.733);">Ostatnia &raquo</a>
     </li>
     {% endif %}
     </ul>

@@ -2,23 +2,37 @@
 
 {% block content %}
 <br>
-<div class="card" style="width:400px; height:290px; border-color:black;">
+<div class="card" 
+style="
+width:400px; 
+height:290px; 
+border-color:black;
+background: rgba( 255, 255, 255, 0.5 );
+
+border-radius: 10px;
+
+
+
+
+">
   <center>
-   <h4 class="card-header bg-dark text-white">Logowanie</h4>
+   <h4 class="card-header bg-dark text-white " style="border-top-left-radius: 10px; border-top-right-radius: 10px;">Logowanie</h4>
   </center>
       <div class="card-body">
         <form action="" method="POST">
       {% csrf_token %}
       <div class="mb-3">
         <label class="form-label">Nazwa użytkownika</label>
-        <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+        <input type="text" class="form-control" name="username" aria-describedby="emailHelp" style="background: rgba(255, 255, 255, 0.664);">
       </div>
       <div class="mb-3">
         <label class="form-label">Hasło</label>
-        <input type="password" class="form-control" name="password">
+        <input type="password" class="form-control" name="password" style="background: rgba(255, 255, 255, 0.664);">
       </div>
-      <input type="submit" value="Zaloguj" class="btn btn-secondary">
+      <input type="submit" value="Zaloguj" class="btn btn-secondary" style="background: rgba(0, 0, 0, 0.664);">
         </form>
       </div>
 </div>
 {% endblock %}
+
+

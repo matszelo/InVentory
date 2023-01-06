@@ -2,6 +2,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+⁣
 <div class="card border-dark mb-8">
   <div class="card-header text-center">
     <h1>{{ equipment.nazwa }}</h1>
@@ -41,6 +42,7 @@
         </nav>
     {% endif %}
 </div>
+⁣
 {% else %}
 <h1>Tylko zalogowani użytkownicy mogą widzieć listę sprzętów</h1>
 <a href="{% url 'login_user' %}">Zaloguj się</a>

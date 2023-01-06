@@ -3,26 +3,42 @@
 {% block content %}
     {% if user.is_authenticated%}
         {% if searched %}
+        <center>
         <h1>Szukany sprzęt: {{searched}}</h1>
+        </center>
         <br/>
         {% for equipment in equipments %}
-        <div class="card">
-            <div class="card-header ">
-              <h1><a href="{% url 'show_equipment' equipment.id %}">{{ equipment.nazwa }}</a></h1>
-              </div>
-              <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                  <p class="fs-7">ID Sprzętu: {{ equipment.id }}<p/>
-                  <p class="fs-7">Kategoria: {{ equipment.kategoria }}<p/>
-                  <p class="fs-7">Producent: {{ equipment.producent }}<p/>
-                  <p class="fs-7">Numer seryjny: {{ equipment.numer_seryjny }}<p/>
-                  <p class="fs-7">Numer inwentarzowy: {{ equipment.numer_inwentarzowy }}<p/>
-                  <p class="fs-7">Lokalizacja: {{ equipment.lokalizacja }}<p/>
-                  <p class="fs-7">Data utworzenia: {{ equipment.data_utworzenia }}<p/>
-                </blockquote>
+        <div class="card border-dark mb-8">
+          <div class="card-header text-center">
+            <h1><a href="{% url 'show_equipment' equipment.id %}">{{ equipment.nazwa }}</a></h1>
+          </div>
+          <div class="card-body">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col text-align-left">
+                  <p class="fs-5 fw-bold">ID Sprzętu: {{ equipment.id }}</p>
+                  <p class="fs-5 fw-bold">Kategoria: {{ equipment.kategoria }}</p>
+                  <p class="fs-5 fw-bold">Producent: {{ equipment.producent }}</p>
+                  <p class="fs-5 fw-bold">Numer seryjny: {{ equipment.numer_seryjny }}</p>
+                  <p class="fs-5 fw-bold">Numer inwentarzowy: {{ equipment.numer_inwentarzowy }}</p>
+                  <p class="fs-5 fw-bold">Lokalizacja: {{ equipment.lokalizacja }}</p>
+                  <p class="fs-5 fw-bold">Data utworzenia: {{ equipment.data_utworzenia }}</p>
+                </div>
+                <div class="col text-center">
+                  {% if equipment.zdjecie %}
+                     <img src="{{ equipment.zdjecie.url }}" class="img-fluid" width="250" height="250">
+                  {% endif %}
+                </div>
+                <div class="col text-center">
+                  {% if equipment.QR_code %}
+                          <img src="{{ equipment.QR_code.url }}" width="250" height="250">
+                  {% endif %}
+                </div>
               </div>
             </div>
-            <br/>
+          </div>
+        </div>
+        ⁣
         {% endfor %}
         {% else %}
         <h1>Zapomniałeś wyszukać sprzętu</h1>
