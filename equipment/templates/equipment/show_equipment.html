@@ -32,15 +32,15 @@
       </div>
     </div>
   </div>
-    {% if user.is_authenticated and user.is_staff %}
         <nav class="navbar bg-dark">
             <div class="container-fluid d-grid gap-2 d-md-flex justify-content-center" >
                 <a class="btn btn-secondary col-3" href="{% url 'equipment_list' %}" role="button">Powrót</a>
+                {% if user.is_authenticated and user.is_staff %}
                 <a class="btn btn-warning col-3" href="{% url 'update_equipment' equipment.id %}" role="button">Edytuj</a>
                 <a class="btn btn-danger col-3" href="{% url 'delete_equipment' equipment.id %}" role="button">Usuń</a>
+                {% endif %}
             </div>
         </nav>
-    {% endif %}
 </div>
 ⁣
 {% else %}
