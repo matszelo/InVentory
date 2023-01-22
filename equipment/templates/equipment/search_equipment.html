@@ -5,8 +5,10 @@
         {% if searched %}
         <center>
         <h1>Szukany sprzęt: {{searched}}</h1>
+            <br>
+            <a class="btn btn-secondary col-1" href="{% url 'equipment_list' %}" role="button">Powrót</a>
         </center>
-        <br/>
+        <br>
         {% for equipment in equipments %}
         <div class="card border-dark mb-8">
           <div class="card-header text-center">
