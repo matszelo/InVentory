@@ -7,6 +7,3 @@ admin.site.register(Sprzet)
 admin.site.register(Kategoria)
 admin.site.register(Producent)
 admin.site.register(Lokalizacja)
-
-
-
