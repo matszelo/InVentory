@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import Sprzet
 
+# Formularz dodawania nowego sprzętu do bazy
 
 class Equipmentform(ModelForm):
     class Meta:
